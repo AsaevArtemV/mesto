@@ -1,0 +1,16 @@
+.card__like-button {
+  background-image: url(../../../images/Vector\ \(Stroke\).png);
+  background-repeat: no-repeat;
+  min-width: 22px;
+  min-height: 19px;
+  margin: 30px 20px 30px 15px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  transition: opacity .2s;
+}
+
+.card__like-button:hover {
+  opacity: .5;
+}

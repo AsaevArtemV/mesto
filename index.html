@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место Россия</title>
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип место Россия">
+  </header>
+  <main>
+    <section class="profile">
+      <div class="profile__container">
+        <img class="profile__avatar-image" src="./images/Kusto.jpg" alt="Аватар профиля">
+        <div class="profile__info">
+          <div class="profile__block">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button" type="button" aria-label="Добавить фотографию"></button>
+    </section>
+    <section class="elements">
+      <article class="card">
+        <img class="card__image" src="./images/karachaevsk.jpg" alt="Изображение Карачаево-Черкесской республики">
+        <div class="card__element">
+          <h2 class="card__title">Карачаевo-черкессия</h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img class="card__image" src="./images/albrus.jpg" alt="Изображение горы Эльбрус">
+        <div class="card__element">
+          <h2 class="card__title">Гора Эльбрус</h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img class="card__image" src="./images/dombai.jpg" alt="Изображение Домбая">
+        <div class="card__element">
+          <h2 class="card__title">Домбай</h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img class="card__image" src="./images/indian_ocean.jpg" alt="Изображение Индийского океана">
+        <div class="card__element">
+          <h2 class="card__title">Индийский океан</h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img class="card__image" src="./images/Monterei.jpg" alt="Изображение берига Монтерей">
+        <div class="card__element">
+          <h2 class="card__title">Побережье Монтерей</h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img class="card__image" src="./images/red_sea.jpg" alt="Изображение Красного моря">
+        <div class="card__element">
+          <h2 class="card__title">Крайное море</h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+  </footer>
+  <div class="popup ">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input type="text" name="name" class="popup__input-name" placeholder="Жак-Ив Кусто" required>
+      <input type="text" name="job" class="popup__input-job" placeholder="Исследователь океана" required>
+      <button class="popup__save-button" type="submit">Сохранить</button>
+    </div>
+  </div>
+  <script src="./vendor/script.js"></script>
+</body>
+</html>

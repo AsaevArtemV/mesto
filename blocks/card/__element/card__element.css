@@ -1,0 +1,7 @@
+.card__element {
+  background-color: #FFFFFF;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  max-height: 79px;
+}
