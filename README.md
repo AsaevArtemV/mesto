@@ -5,4 +5,4 @@
 ## Описание:
 "Mesto Russia" - это одностраничный сайт в котором имеется профель с именем и професией, аватаром профиля, изображением красивых мест с их названиями. В работе применены расширенные возможности HTML и CSS, JavaScript (Асинхронный JS, ООП в интерфейсах).
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылка на проект Mesto Russia](https://asaevartemv.github.io/mesto/index.html)
