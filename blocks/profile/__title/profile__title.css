@@ -1,5 +1,8 @@
 .profile__title {
   max-width: 294px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;

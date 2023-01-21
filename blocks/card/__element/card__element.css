@@ -3,5 +3,5 @@
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  max-height: 79px;
+  min-height: 79px;
 }

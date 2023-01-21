@@ -3,12 +3,12 @@
   min-width: 32px;
   background-color: transparent;
   border: none;
-  background-image: url(../../../images/Close_Icon.png);
+  background-image: url(../../../images/Close\ Icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
   position: absolute;
-  transform: translate(calc(720% + 8px),calc(-100% - 8px));
+  transform: translate(calc(721% + 8px),calc(-103% - 8px));
   transition: opacity .2s;
 }
 
