@@ -13,7 +13,6 @@ const popupBtnSave = document.querySelector('.popup__save-button');
 
     function openPopup () {
       popupContainer.classList.add('popup_is-opened');
-
       nameInput.value = profileTitle.textContent;
       jobInput.value = profileSubtitle.textContent;
     }
@@ -23,15 +22,10 @@ const popupBtnSave = document.querySelector('.popup__save-button');
     }
 
     function handleFormSubmit (evt) {
-      evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
-      //console.log(nameInput.value);
-      //console.log(jobInput.value);
+      evt.preventDefault();
       profileTitle.textContent = nameInput.value;
       profileSubtitle.textContent = jobInput.value;
-      popupBtnSave.addEventListener('click', closePopup);
-
+      closePopup();
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
