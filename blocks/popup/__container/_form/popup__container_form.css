@@ -1,0 +1,11 @@
+.popup__container_form {
+  min-width: 430px;
+  min-height: 330px;
+}
+
+@media screen and (max-width: 700px) {
+    .popup__container_form {
+      min-width: 282px;
+      min-height: 322px;
+    }
+}

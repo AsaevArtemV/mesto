@@ -1,0 +1,11 @@
+.popup__close-button_type_increase {
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 700px) {
+  .popup__close-button_type_increase {
+    top: -36px;
+    right: 0px;
+  }
+}

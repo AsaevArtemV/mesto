@@ -4,4 +4,5 @@
   grid-template-columns: auto auto;
   justify-content: space-between;
   min-height: 79px;
+  width: 100%;
 }

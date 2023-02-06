@@ -1,5 +1,5 @@
 .profile__subtitle {
-  max-width: 336px;
+  width: 315px;
   font-style: normal;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -11,11 +11,17 @@
   color: #FFFFFF;
 }
 
+@media screen and (max-width: 700px) {
+    .profile__subtitle {
+      text-align: center;
+    }
+}
+
 @media screen and (max-width: 384px) {
     .profile__subtitle {
       max-width: 282px;
       font-size: 14px;
       line-height: 17px;
       margin-bottom: 32px;
-    }
+     }
 }

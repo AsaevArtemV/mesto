@@ -25,56 +25,27 @@
       <button class="profile__add-button" type="button" aria-label="Добавить фотографию"></button>
     </section>
     <section class="elements">
-      <article class="card">
-        <img class="card__image" src="./images/karachaevsk.jpg" alt="Изображение Карачаево-Черкесской республики">
-        <div class="card__element">
-          <h2 class="card__title">Карачаевo-черкессия</h2>
-          <button class="card__like-button" type="button" aria-label="Лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/albrus.jpg" alt="Изображение горы Эльбрус">
-        <div class="card__element">
-          <h2 class="card__title">Гора Эльбрус</h2>
-          <button class="card__like-button" type="button" aria-label="Лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombai.jpg" alt="Изображение Домбая">
-        <div class="card__element">
-          <h2 class="card__title">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="Лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/indian_ocean.jpg" alt="Изображение Индийского океана">
-        <div class="card__element">
-          <h2 class="card__title">Индийский океан</h2>
-          <button class="card__like-button" type="button" aria-label="Лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/Monterei.jpg" alt="Изображение берига Монтерей">
-        <div class="card__element">
-          <h2 class="card__title">Побережье Монтерей</h2>
-          <button class="card__like-button" type="button" aria-label="Лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/red_sea.jpg" alt="Изображение Красного моря">
-        <div class="card__element">
-          <h2 class="card__title">Крайное море</h2>
-          <button class="card__like-button" type="button" aria-label="Лайк"></button>
-        </div>
-      </article>
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
-  <div class="popup ">
-    <div class="popup__container">
-      <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
+  <!--темплейт для карточек-->
+  <template class="card-template">
+    <article class="card">
+      <button class="card__delete-button" type="button" aria-label="Корзина"></button>
+      <img class="card__image" src="#" alt="#">
+      <div class="card__element">
+        <h2 class="card__title">#</h2>
+        <button class="card__like-button" type="button" aria-label="Лайк"></button>
+      </div>
+    </article>
+  </template>
+  <!--попаап редактирования профиля-->
+  <div class="popup popup_type_edit-profile">
+    <div class="popup__container popup__container_form popup__container_type_edit">
+      <button class="popup__close-button popup__close-button_type_edit" type="button"
+        aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="form-name" autocomplete="on">
         <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="Имя" required>
@@ -82,6 +53,26 @@
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
+  </div>
+  <!--попап добавления новой карточки-->
+  <div class="popup popup_type_add-card">
+    <div class="popup__container popup__container_form popup__container_type_add">
+      <button class="popup__close-button popup__close-button_type_add" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title popup__title_type_add-card">Новое место</h2>
+      <form class="popup__form popup__form_type_add-card" name="form-name" autocomplete="on">
+        <input type="text" name="title" id="title" class="popup__input popup__input_type_title" placeholder="Название" required>
+        <input type="url" name="link" id="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required>
+        <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <!--попап добавления, увеличения фотографии-->
+  <div class="popup popup_type_increase-card">
+    <figure class="popup__container popup__container_type_increase">
+      <button class="popup__close-button popup__close-button_type_increase" type="button" aria-label="Закрыть окно"></button>
+      <img src="#" class="popup__img" alt="#">
+      <figcaption class="popup__img-name"></figcaption>
+    </figure>
   </div>
   <script src="./scripts/index.js"></script>
 </body>

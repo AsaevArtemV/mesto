@@ -8,7 +8,8 @@
   background-size: contain;
   cursor: pointer;
   position: absolute;
-  transform: translate(calc(721% + 8px),calc(-103% - 8px));
+  top: -40px;
+  right: -40px;
   transition: opacity .2s;
 }
 
@@ -18,8 +19,9 @@
 
 @media screen and (max-width: 700px) {
     .popup__close-button {
-      transform: translate(calc(617% + 8px),calc(-145% - 8px));
       min-height: 20px;
       min-width: 20px;
+      top: -36px;
+      right: 0;
     }
 }

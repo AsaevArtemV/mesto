@@ -9,5 +9,10 @@
   bottom: 0;
   top: 0;
   right: 0;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity 0.5s linear;
 }
+
+
