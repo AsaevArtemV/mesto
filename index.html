@@ -46,10 +46,10 @@
       <button class="popup__close-button popup__close-button_type_edit" type="button"
         aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="form-name" autocomplete="on">
+      <form class="popup__form popup__form_type_edit-profile" name="form-name" autocomplete="on">
         <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="Имя" required>
         <input type="text" name="job" id="job" class="popup__input popup__input_type_job" placeholder="Профессия" required>
-        <button class="popup__save-button" type="submit">Сохранить</button>
+        <button class="popup__save-button popup__save-button_type_edit-profile" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -73,6 +73,7 @@
       <figcaption class="popup__img-name"></figcaption>
     </figure>
   </div>
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

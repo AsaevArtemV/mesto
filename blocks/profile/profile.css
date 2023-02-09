@@ -7,22 +7,23 @@
   align-items: center;
 }
 
-@media screen and (max-width: 918px) {
+@media screen and (max-width: 1024px) {
     .profile {
-      margin-left: 19px;
-      margin-right: 19px;
+      max-width: 581px;
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 619px) {
     .profile {
       flex-direction: column;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .profile {
       margin-bottom: 36px;
       margin-top: 42px;
     }
+}
+
+@media screen and (max-width: 619px) {
+  .profile {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
 }

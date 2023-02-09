@@ -16,10 +16,10 @@
   opacity: .6;
 }
 
-@media screen and (max-width: 384px) {
+@media screen and (max-width: 1024px) {
     .profile__edit-button {
       min-width: 18px;
       max-height: 18px;
-      margin-top: 28px;
+      margin-top: 32px;
     }
 }

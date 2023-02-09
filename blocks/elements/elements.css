@@ -6,15 +6,22 @@
   gap: 20px 17px;
 }
 
-@media screen and (max-width: 924px) {
+@media screen and (max-width: 1024px) {
     .elements {
-      margin-left: 19px;
-      margin-right: 19px;
+      max-width: 581px;
+    }
+}
+
+@media screen and (max-width: 619px) {
+    .elements {
+      max-width: 282px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .elements {
       margin-bottom: 50px;
+      margin-left: 19px;
+      margin-right: 19px;
     }
 }
