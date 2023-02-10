@@ -77,6 +77,30 @@ function createCard(name, link) {
   card.querySelector('.card__image').src = link;
   card.querySelector('.card__image').alt = name;
   card.querySelector('.card__title').textContent = name;
+
+  //ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ ЛАЙКОВ
+card.addEventListener('click', function handleLikeClick(evt) {
+  evt.target.classList.toggle('card__like-button_active');
+});
+
+  //ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ УДАЛИТЬ КАРТОЧКУ
+  cardsContainer.addEventListener('click', function handleDeleteCard(evt) {
+    if (evt.target.classList.contains('card__delete-button')) {
+      const eventTarget = evt.target.closest('.card');
+      eventTarget.remove();
+    }
+  });
+
+  //ФУНКЦИЯ НА СОБЫТИЕ ПРИ КЛИКЕ ПРОСМОТР КАРТИНКИ (попап)
+  cardsContainer.addEventListener('click', function viewImageCard(evt) {
+    if (evt.target.closest('.card__image')) {
+      popupImg.src = evt.target.closest('.card__image').src;
+      popupImgName.alt = evt.target.closest('.card__image').alt;
+      popupImgName.textContent = evt.target.closest('.card__image').alt;
+      openPopup(popupIncreaseCard);
+    }
+  });
+
   return card;
 };
 
@@ -87,31 +111,6 @@ function handleFormSubmitNewCard(evt) {//функция обработки фо�
   closePopup(popupAdd); //закрытие попапа дабавления карты
   popupFormTypeAddCard.reset()
 };
-
-//ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ ЛАЙКОВ
-cardsContainer.addEventListener('click', function handleLikeClick(evt) {
-  if (evt.target.classList.contains('card__like-button')) {
-    evt.target.classList.toggle('card__like-button_active');
-  }
-});
-
-//ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ УДАЛИТЬ КАРТОЧКУ
-cardsContainer.addEventListener('click', function handleDeleteCard(evt) {
-  if (evt.target.classList.contains('card__delete-button')) {
-    const eventTarget = evt.target.closest('.card');
-    eventTarget.remove();
-  }
-});
-
-//ФУНКЦИЯ НА СОБЫТИЕ ПРИ КЛИКЕ ПРОСМОТР КАРТИНКИ (попап)
-cardsContainer.addEventListener('click', function viewImageCard(evt) {
-  if (evt.target.closest('.card__image')) {
-    popupImg.src = evt.target.closest('.card__image').src;
-    popupImgName.alt = evt.target.closest('.card__image').alt;
-    popupImgName.textContent = evt.target.closest('.card__image').alt;
-    openPopup(popupIncreaseCard);
-  }
-});
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ОТКРЫТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ (попап)
 popupEditBtnOpen.addEventListener('click', handleOpenProfileForm);
