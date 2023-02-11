@@ -1,4 +1,4 @@
-//Переменные для редактирование профиля
+//ПЕРЕМЕННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 const popupEditBtnOpen = document.querySelector('.profile__edit-button');
 const popupBtnCloseEdit = document.querySelector('.popup__close-button_type_edit');
 const profileFormEdit = document.querySelector('.popup__form_type_edit-profile');
@@ -8,7 +8,7 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 
-//Переменные кнопки добавления карточек
+//ПЕРЕМЕННЫЕ КНОПКИ ДОБАВЛЕНИЯ КАРТОЧЕК
 const cardTemplate = document.querySelector('.card-template').content.querySelector('.card');
 const popupAddBtnOpenNewCard = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_type_add-card');
@@ -16,7 +16,7 @@ const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_link');
 const popupBtnCloseAdd = document.querySelector('.popup__close-button_type_add');
 
-//Переменные для добавления карточки
+//ПЕРЕМЕННЫЕ ДЛЯ ДОБАВЛЕНИЯ КАРТОЧКИ
 const cardsContainer = document.querySelector('.elements');
 const popupFormTypeAddCard = document.querySelector('.popup__form_type_add-card');
 
@@ -25,9 +25,6 @@ const popupIncreaseCard = document.querySelector('.popup_type_increase-card');
 const popupBtnCloseIncrease = document.querySelector('.popup__close-button_type_increase');
 const popupImg = document.querySelector('.popup__img');
 const popupImgName = document.querySelector('.popup__img-name');
-
-//ПЕРЕМЕННАЯ ДЛЯ ЛАЙКОВ
-const cardBtnLike = document.querySelector('.card__like-button');
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ДОБАВИТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПРИ ОТКРЫТИИ (попап)
 function openPopup(popup) {
@@ -78,30 +75,31 @@ function createCard(name, link) {
   card.querySelector('.card__image').alt = name;
   card.querySelector('.card__title').textContent = name;
 
+  const buttonLike = card.querySelector('.card__like-button');
+  const buttonDelete = card.querySelector('.card__delete-button');
+  const image = card.querySelector('.card__image');
+
 //ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ ЛАЙКОВ
-card.addEventListener('click', function handleLikeClick(evt) {
-  evt.target.classList.toggle('card__like-button_active');
-});
+  buttonLike.addEventListener('click', function handleLikeClick(evt) {
+    evt.target.classList.toggle('card__like-button_active');
+  });
 
 //ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ УДАЛИТЬ КАРТОЧКУ
-cardsContainer.addEventListener('click', function handleDeleteCard(evt) {
-  if (evt.target.classList.contains('card__delete-button')) {
+  buttonDelete.addEventListener('click', function handleDeleteCard(evt) {
     const eventTarget = evt.target.closest('.card');
     eventTarget.remove();
-  }
-});
+  });
 
 //ФУНКЦИЯ НА СОБЫТИЕ ПРИ КЛИКЕ ПРОСМОТР КАРТИНКИ (попап)
-cardsContainer.addEventListener('click', function viewImageCard(evt) {
-  if (evt.target.closest('.card__image')) {
+  image.addEventListener('click', function viewImageCard(evt) {
+    evt.target.closest('.card__image');
     popupImg.src = evt.target.closest('.card__image').src;
     popupImgName.alt = evt.target.closest('.card__image').alt;
     popupImgName.textContent = evt.target.closest('.card__image').alt;
     openPopup(popupIncreaseCard);
-  }
-});
+  });
 
-return card;
+  return card;
 };
 
 //ФУНКЦИЯ ОБРАБОТКИ ФОРМЫ (отменяет стандартную отправку формы, вызов функции создания новой карточки, вызов функции закрыть попап)
@@ -122,7 +120,7 @@ popupBtnCloseEdit.addEventListener('click', function () {
 
 profileFormEdit.addEventListener('submit', handleSubmitProfileForm);
 
-//оброботчик событий при клики на кнопку добавить новую карточку
+//ОБРАБОТЧИК СОБЫТИЙ ПРИ КЛИКИ НА КНОПКУ ДОБАВИТЬ НОВУЮ КАРТОЧКУ
 popupAddBtnOpenNewCard.addEventListener('click', function () {
   openPopup(popupAdd);
 });
