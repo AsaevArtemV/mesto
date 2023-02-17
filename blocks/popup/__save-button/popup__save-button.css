@@ -6,7 +6,7 @@
   line-height: 22px;
   background-color: #000000;
   color: #FFFFFF;
-  margin-top: 17px;
+  margin-top: 10px;
   border-radius: 2px;
   cursor: pointer;
   transition: opacity .2s;
@@ -22,6 +22,6 @@
       min-height: 46px;
       font-size: 14px;
       line-height: 17px;
-      margin-top: 16px;
+      margin-top: 7px;
     }
 }

@@ -1,4 +1,5 @@
 //ПЕРЕМЕННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
+const popupContainer = document.querySelector('.popup');
 const popupEditBtnOpen = document.querySelector('.profile__edit-button');
 const popupBtnCloseEdit = document.querySelector('.popup__close-button_type_edit');
 const profileFormEdit = document.querySelector('.popup__form_type_edit-profile');
@@ -29,11 +30,13 @@ const popupImgName = document.querySelector('.popup__img-name');
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ДОБАВИТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПРИ ОТКРЫТИИ (попап)
 function openPopup(popup) {
   popup.classList.add('popup_is-opened');
+  document.addEventListener('keydown', keyHandlerEsc);
 };
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ДОБАВИТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПРИ ЗАКРЫТИИ (попап)
 function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', keyHandlerEsc);
 };
 
 //ФУНКЦИЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
@@ -41,6 +44,7 @@ function handleOpenProfileForm() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
+  popupErrorValid(popupEditProfile);
 };
 
 //фУНКЦИЯ ДЛЯ ОТПРАВУИ ДАННЫХ НА САЙТ
@@ -80,19 +84,17 @@ function createCard(name, link) {
   const image = card.querySelector('.card__image');
 
 //ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ ЛАЙКОВ
-  buttonLike.addEventListener('click', function handleLikeClick(evt) {
-    evt.target.classList.toggle('card__like-button_active');
+  buttonLike.addEventListener('click', function handleLikeClick() {
+    buttonLike.classList.toggle('card__like-button_active');
   });
 
 //ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ УДАЛИТЬ КАРТОЧКУ
-  buttonDelete.addEventListener('click', function handleDeleteCard(evt) {
-    const eventTarget = evt.target.closest('.card');
-    eventTarget.remove();
+  buttonDelete.addEventListener('click', function handleDeleteCard() {
+    card.remove();
   });
 
 //ФУНКЦИЯ НА СОБЫТИЕ ПРИ КЛИКЕ ПРОСМОТР КАРТИНКИ (попап)
   image.addEventListener('click', function viewImageCard(evt) {
-    evt.target.closest('.card__image');
     popupImg.src = evt.target.closest('.card__image').src;
     popupImgName.alt = evt.target.closest('.card__image').alt;
     popupImgName.textContent = evt.target.closest('.card__image').alt;
@@ -101,6 +103,16 @@ function createCard(name, link) {
 
   return card;
 };
+/*
+function createCard(cardData) {
+  ...
+  image.addEventListener("click", () => {
+      cardPreviewImage.src = cardData.link;
+      cardPreviewImage.alt = cardData.name;
+      cardPreviewCaption.textContent = cardData.name;
+  });
+};
+*/
 
 //ФУНКЦИЯ ОБРАБОТКИ ФОРМЫ (отменяет стандартную отправку формы, вызов функции создания новой карточки, вызов функции закрыть попап)
 function handleFormSubmitNewCard(evt) {//функция обработки формы отправки новой карты (объект описывающий событие)
@@ -118,16 +130,31 @@ popupBtnCloseEdit.addEventListener('click', function () {
   closePopup(popupEditProfile);
 });
 
+//ПОДПИСКА НА СОБЫТИЕ ЗАКРЫТИЯ ОКНА РЕДАКТИРОВАНИЯ ПРОФИЛЯ ПРИ КЛИКИ НА ОВЕРЛЕЙ
+popupEditProfile.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(popupEditProfile);
+  }
+});
+
 profileFormEdit.addEventListener('submit', handleSubmitProfileForm);
 
 //ОБРАБОТЧИК СОБЫТИЙ ПРИ КЛИКИ НА КНОПКУ ДОБАВИТЬ НОВУЮ КАРТОЧКУ
 popupAddBtnOpenNewCard.addEventListener('click', function () {
   openPopup(popupAdd);
+  popupErrorValid(popupAdd);
 });
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ЗАКРЫТЬ НОВУЮ КАРТОЧКУ (попап)
 popupBtnCloseAdd.addEventListener('click', function () {
   closePopup(popupAdd);
+});
+
+//ПОДПИСКА НА СОБЫТИЕ ЗАКРЫТИЯ ОКНА ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ ПРИ КЛИКИ НА ОВЕРЛЕЙ
+popupAdd.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(popupAdd);
+  }
 });
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ СОХРАНИТЬ (вызов функции обработки формы по нажатия кнопки "сохранить")
@@ -137,3 +164,16 @@ popupFormTypeAddCard.addEventListener('submit', handleFormSubmitNewCard);
 popupBtnCloseIncrease.addEventListener('click', function () {
   closePopup(popupIncreaseCard);
 });
+
+//ПОДПИСКА НА СОБЫТИЕ ЗАКРЫТИЯ ОКНА ПРОСМОТРА КАРТИНКИ ПРИ КЛИКИ НА ОВЕРЛЕЙ
+popupIncreaseCard.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(popupIncreaseCard);
+  }
+});
+
+function keyHandlerEsc (evt) {
+  if (evt.key === 'Escape' && document.querySelector('.popup_is-opened')) {
+    closePopup(document.querySelector('.popup_is-opened'));
+  }
+};
