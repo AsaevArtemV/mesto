@@ -30,13 +30,13 @@ const popupImgName = document.querySelector('.popup__img-name');
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ДОБАВИТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПРИ ОТКРЫТИИ (попап)
 function openPopup(popup) {
   popup.classList.add('popup_is-opened');
-  document.addEventListener('keydown', keyHandlerEsc);
+  document.addEventListener('keydown', actionHandlerEscape);
 };
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ДОБАВИТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПРИ ЗАКРЫТИИ (попап)
 function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
-  document.removeEventListener('keydown', keyHandlerEsc);
+  document.removeEventListener('keydown', actionHandlerEscape);
 };
 
 //ФУНКЦИЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
@@ -44,7 +44,8 @@ function handleOpenProfileForm() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
-  popupErrorValid(popupEditProfile);
+  blockSaveButton (popupEditProfile, enableValidationForm);
+  resetError(popupEditProfile, enableValidationForm);
 };
 
 //фУНКЦИЯ ДЛЯ ОТПРАВУИ ДАННЫХ НА САЙТ
@@ -103,23 +104,20 @@ function createCard(name, link) {
 
   return card;
 };
-/*
-function createCard(cardData) {
-  ...
-  image.addEventListener("click", () => {
-      cardPreviewImage.src = cardData.link;
-      cardPreviewImage.alt = cardData.name;
-      cardPreviewCaption.textContent = cardData.name;
-  });
-};
-*/
 
 //ФУНКЦИЯ ОБРАБОТКИ ФОРМЫ (отменяет стандартную отправку формы, вызов функции создания новой карточки, вызов функции закрыть попап)
 function handleFormSubmitNewCard(evt) {//функция обработки формы отправки новой карты (объект описывающий событие)
   evt.preventDefault(); //эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки
   addNewImageCard();
   closePopup(popupAdd); //закрытие попапа дабавления карты
-  popupFormTypeAddCard.reset()
+  popupFormTypeAddCard.reset();
+};
+
+//ФУНКЦИЯ БЛОКИРОВАНИЯ КНОПКИ ПРИ ОТКРЫТИИ ФОРМЫ ДОБАВЛЕНИЯ КАРТОЧКИ
+function blockSaveButton (item, enable) {
+  const popupSaveButton = item.querySelector(enable.submitButtonSelector);
+  popupSaveButton.disabled = true;
+  popupSaveButton.classList.add(enable.inactiveButtonClass);
 };
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ОТКРЫТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ (попап)
@@ -141,8 +139,11 @@ profileFormEdit.addEventListener('submit', handleSubmitProfileForm);
 
 //ОБРАБОТЧИК СОБЫТИЙ ПРИ КЛИКИ НА КНОПКУ ДОБАВИТЬ НОВУЮ КАРТОЧКУ
 popupAddBtnOpenNewCard.addEventListener('click', function () {
+  titleInput.value = titleInput.textContent;
+  linkInput.value = linkInput.textContent;
   openPopup(popupAdd);
-  popupErrorValid(popupAdd);
+  blockSaveButton (popupAdd, enableValidationForm);
+  resetError(popupAdd, enableValidationForm);
 });
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ЗАКРЫТЬ НОВУЮ КАРТОЧКУ (попап)
@@ -172,8 +173,8 @@ popupIncreaseCard.addEventListener('click', function (event) {
   }
 });
 
-function keyHandlerEsc (evt) {
-  if (evt.key === 'Escape' && document.querySelector('.popup_is-opened')) {
+function actionHandlerEscape (evt) {
+  if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_is-opened'));
   }
 };
