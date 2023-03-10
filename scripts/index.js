@@ -1,5 +1,8 @@
+import { Card } from './Card.js'
+import { initialCards } from './initialCards.js'
+import { FormValidator } from './FormValidator.js'
+
 //ПЕРЕМЕННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-const popupContainer = document.querySelector('.popup');
 const popupEditBtnOpen = document.querySelector('.profile__edit-button');
 const popupBtnCloseEdit = document.querySelector('.popup__close-button_type_edit');
 const profileFormEdit = document.querySelector('.popup__form_type_edit-profile');
@@ -10,7 +13,6 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 
 //ПЕРЕМЕННЫЕ КНОПКИ ДОБАВЛЕНИЯ КАРТОЧЕК
-const cardTemplate = document.querySelector('.card-template').content.querySelector('.card');
 const popupAddBtnOpenNewCard = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_type_add-card');
 const titleInput = document.querySelector('.popup__input_type_title');
@@ -18,7 +20,6 @@ const linkInput = document.querySelector('.popup__input_type_link');
 const popupBtnCloseAdd = document.querySelector('.popup__close-button_type_add');
 
 //ПЕРЕМЕННЫЕ ДЛЯ ДОБАВЛЕНИЯ КАРТОЧКИ
-const cardsContainer = document.querySelector('.elements');
 const popupFormTypeAddCard = document.querySelector('.popup__form_type_add-card');
 
 //ПЕРЕМЕННЫЕ ДЛЯ ПРОСМОТРА ФОТОГРАФИЙ
@@ -26,6 +27,22 @@ const popupIncreaseCard = document.querySelector('.popup_type_increase-card');
 const popupBtnCloseIncrease = document.querySelector('.popup__close-button_type_increase');
 const popupImg = document.querySelector('.popup__img');
 const popupImgName = document.querySelector('.popup__img-name');
+
+const enableValidationForm = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active',
+  setPopup: '.popup__set'
+});
+
+const popupAddFormValid = new FormValidator(enableValidationForm, popupFormTypeAddCard);
+const popupEditFormValid = new FormValidator(enableValidationForm, profileFormEdit);
+
+popupEditFormValid.enableValidation();
+popupAddFormValid.enableValidation();
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ДОБАВИТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПРИ ОТКРЫТИИ (попап)
 function openPopup(popup) {
@@ -45,71 +62,45 @@ function handleOpenProfileForm() {
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
   blockSaveButton (popupEditProfile, enableValidationForm);
-  resetError(popupEditProfile, enableValidationForm);
+  //resetError(popupEditProfile, enableValidationForm);
+  popupEditFormValid.resetError();
 };
 
-//фУНКЦИЯ ДЛЯ ОТПРАВУИ ДАННЫХ НА САЙТ
-function handleSubmitProfileForm(evt) {
+//фУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ НА САЙТ
+export function handleSubmitProfileForm(evt) {
   evt.preventDefault(); //эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
   closePopup(popupEditProfile);
 };
 
-//ФУНКЦИЯ ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ (клонирование, наполнение полей, размещение в DOM)
-function addNewImageCard() {
-  const name = titleInput.value;
-  const link = linkInput.value;
-  const card = createCard(name, link);
-  cardsContainer.prepend(card);
+initialCards.forEach((item) => {
+  // Добавляем в DOM
+  document.querySelector('.elements').append(createNewCard(item));
+});
+
+function createNewCard(item) {
+  const card = new Card(item.name, item.link);
+  const cardElement = card.generateCard();
+  return cardElement;
 };
-
-//ФУНКЦИЯ ДОБОВЛЕНИЯ КАРТОЧИК В МАССИВ
-function renderCards(initialCards) {
-  const cards = initialCards.map(function(card) {
-    return createCard(card.name, card.link);
-  });
-  cardsContainer.append(...cards);
-};
-
-renderCards(initialCards);
-
-function createCard(name, link) {
-  const card = cardTemplate.cloneNode(true);
-  card.querySelector('.card__image').src = link;
-  card.querySelector('.card__image').alt = name;
-  card.querySelector('.card__title').textContent = name;
-
-  const buttonLike = card.querySelector('.card__like-button');
-  const buttonDelete = card.querySelector('.card__delete-button');
-  const image = card.querySelector('.card__image');
-
-//ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ ЛАЙКОВ
-  buttonLike.addEventListener('click', function handleLikeClick() {
-    buttonLike.classList.toggle('card__like-button_active');
-  });
-
-//ФУНКЦИЯ НА СОБЫТИЕ КНОПКИ УДАЛИТЬ КАРТОЧКУ
-  buttonDelete.addEventListener('click', function handleDeleteCard() {
-    card.remove();
-  });
 
 //ФУНКЦИЯ НА СОБЫТИЕ ПРИ КЛИКЕ ПРОСМОТР КАРТИНКИ (попап)
-  image.addEventListener('click', function viewImageCard(evt) {
+  export function viewImageCard(evt) {
     popupImg.src = evt.target.closest('.card__image').src;
     popupImgName.alt = evt.target.closest('.card__image').alt;
     popupImgName.textContent = evt.target.closest('.card__image').alt;
     openPopup(popupIncreaseCard);
-  });
-
-  return card;
-};
+  };
 
 //ФУНКЦИЯ ОБРАБОТКИ ФОРМЫ (отменяет стандартную отправку формы, вызов функции создания новой карточки, вызов функции закрыть попап)
 function handleFormSubmitNewCard(evt) {//функция обработки формы отправки новой карты (объект описывающий событие)
+  const name = titleInput.value;
+  const link = linkInput.value;
   evt.preventDefault(); //эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки
-  addNewImageCard();
+  createNewCard(name, link);
   closePopup(popupAdd); //закрытие попапа дабавления карты
+  document.querySelector('.elements').prepend(createNewCard( {name, link} ));
   popupFormTypeAddCard.reset();
 };
 
@@ -143,7 +134,8 @@ popupAddBtnOpenNewCard.addEventListener('click', function () {
   linkInput.value = linkInput.textContent;
   openPopup(popupAdd);
   blockSaveButton (popupAdd, enableValidationForm);
-  resetError(popupAdd, enableValidationForm);
+  //resetError(popupAdd, enableValidationForm);
+  popupAddFormValid.resetError();
 });
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ЗАКРЫТЬ НОВУЮ КАРТОЧКУ (попап)
