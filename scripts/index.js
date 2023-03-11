@@ -126,27 +126,14 @@ popups.forEach((popup) => {
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ОТКРЫТЬ РЕДАКТИРОВАНИЕ ПРОФИЛЯ (попап)
 popupEditBtnOpen.addEventListener('click', handleOpenProfileForm);
 
-//ПОДПИСКА НА СОБЫТИЕ ЗАКРЫТИЯ ОКНА РЕДАКТИРОВАНИЯ ПРОФИЛЯ ПРИ КЛИКИ НА ОВЕРЛЕЙ
-popupEditProfile.addEventListener('click', function (event) {
-  if (event.target === event.currentTarget) {
-    closePopup(popupEditProfile);
-  }
-});
-
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ СОХРАНИТЬ ОКНА РЕДАКТИРОВАНИЯ ПРОФИЛЯ (вызов функции обработки формы по нажатия кнопки "сохранить")
 profileForm.addEventListener('submit', handleSubmitProfileForm);
 
 //ОБРАБОТЧИК СОБЫТИЙ ПРИ КЛИКИ НА КНОПКУ ДОБАВИТЬ НОВУЮ КАРТОЧКУ
 popupAddBtnOpenNewCard.addEventListener('click', function () {
-  titleInput.value = "";
-  linkInput.value = "";
+  cardForm.reset();
   openPopup(popupAdd);
   popupAddFormValid.resetValidation();
-});
-
-//ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ ЗАКРЫТЬ НОВУЮ КАРТОЧКУ (попап)
-popupBtnCloseAdd.addEventListener('click', function () {
-  closePopup(popupAdd);
 });
 
 //ПОДПИСКА НА СОБЫТИЕ ДЛЯ КНОПКИ СОХРАНИТЬ ОКНА ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ (вызов функции обработки формы по нажатия кнопки "сохранить")
