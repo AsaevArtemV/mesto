@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место Россия</title>
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип место Россия">
+    <img class="header__logo" src="<%=require('./images/logo/logo.svg')%>" alt="Логотип место Россия">
   </header>
   <main>
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__avatar-image" src="./images/Kusto.jpg" alt="Аватар профиля">
+        <img class="profile__avatar-image" src="<%=require('./images/Kusto.jpg')%>" alt="Аватар профиля">
         <div class="profile__info">
           <div class="profile__block">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -69,7 +68,7 @@
       <form class="popup__form popup__form_type_add-card" name="card-form" autocomplete="on" novalidate>
         <fieldset class="popup__set">
           <label class="popup__field">
-            <input type="text" name="title" id="title-input" class="popup__input popup__input_type_title" placeholder="Название" minlength="2" maxlength="30" required>
+            <input type="text" name="name" id="title-input" class="popup__input popup__input_type_title" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="popup__input-error title-input-error"></span>
           </label>
           <label class="popup__field">
