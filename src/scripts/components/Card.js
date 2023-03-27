@@ -1,10 +1,11 @@
-export class Card {
+export default
+class Card {
   constructor(name, link, cardSelector, { handleCardClick }) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-  };
+  }
 
   _getTemplate() {
     const cardElement = document
@@ -14,7 +15,7 @@ export class Card {
       .cloneNode(true);
 
     return cardElement;
-  };
+  }
 
 //ДОБАВЛЕНИЕ КАРТОЧИК ИЗ МАССИВА
   generateCard() {
@@ -32,21 +33,21 @@ export class Card {
 
     // Вернём элемент наружу
     return this._element;
-  };
+  }
 
   //СОБЫТИЕ КНОПКИ ЛАЙКОВ
   _handleLikeClick() {
     this._likeButton.classList.toggle('card__like-button_active');
-  };
+  }
 
   //СОБЫТИЕ КНОПКИ УДАЛИТЬ КАРТОЧКУ
   _handleDeleteCard() {
     this._element.remove();
-  };
+  }
 
   _setEventListeners() {
     this._element.querySelector('.card__delete-button').addEventListener('click', () => this._handleDeleteCard());
     this._likeButton.addEventListener('click', () => this._handleLikeClick());
     this._cardImage.addEventListener('click', () => this._handleCardClick({name:this._name}, {link:this._link}));
   }
-};
+}

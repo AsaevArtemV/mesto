@@ -9,7 +9,6 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._handleSubmit = handleSubmit;
     this._inputValues = {};
-    this._form = this._popup.querySelector('.popup__form');
     this._allInputs = this._form.querySelectorAll('.popup__input');
   }
 
@@ -24,7 +23,7 @@ export default class PopupWithForm extends Popup {
   // Устанавливает слушатель на элементы
   setEventListeners() {
     super.setEventListeners();
-    this._form = this._popup.querySelector('.popup__form').addEventListener('submit', (evt) => {
+    this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submit();
       this.close();
@@ -41,25 +40,4 @@ export default class PopupWithForm extends Popup {
     super.close();
     this._form.reset();
   }
-/*
-  // Блокирует кнопку отправки во время выполнения запроса
-  // blockedButtonText - Текст, отображаемый на кнопке
-  blockSubmitButton(blockedButtonText = 'Сохранение...') {
-    this._blockedButtonText = blockedButtonText;
-    this._submitButton.disabled = true;
-    this._submitButton.textContent = this._blockedButtonText;
-  }
-
-  //Возвращает состояние кнопки отправки после блокировки
-  unblockSubmitButton() {
-    this._submitButton.disabled = false;
-    this._submitButton.textContent = this._originalButtonText;
-  }
-
-  //Открывает попап
-  //open() {
-    //super.open();
- // }
- */
 }
-

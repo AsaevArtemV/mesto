@@ -4,6 +4,7 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this._handleEscape = this._handleEscape.bind(this);
     this._popupCloseButton = this._popup.querySelector('.popup__close-button');
+    this._form = this._popup.querySelector('.popup__form');
     this.setEventListeners();
   }
 
@@ -35,6 +36,5 @@ export default class Popup {
     this._popupCloseButton.addEventListener('click', () => {
       this.close();
     });
-
   }
 }
