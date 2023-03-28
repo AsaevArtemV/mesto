@@ -23,6 +23,7 @@ export default class PopupWithForm extends Popup {
   // Устанавливает слушатель на элементы
   setEventListeners() {
     super.setEventListeners();
+    this._form = this._popup.querySelector('.popup__form');
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submit();

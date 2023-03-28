@@ -23,13 +23,14 @@ import UserInfo from '../scripts/components/UserInfo.js';
 function createCard(item) {
   const card = new Card(item.name, item.link, '.card-template', {
     handleCardClick: () => {
-      const imagePopup = new PopupWithImage('.popup_type_increase-card');
       imagePopup.open(item.name, item.link);
     }
   });
 
   return card.generateCard();
 };
+
+const imagePopup = new PopupWithImage('.popup_type_increase-card');
 
 const renderer = (item) => {
   const cardList = createCard(item)
