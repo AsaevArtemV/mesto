@@ -32,7 +32,7 @@
 .popup__container{align-items:center;background-color:#fff;border-radius:10px;display:flex;flex-direction:column;position:relative}
 .popup__input{border:none;border-bottom:1px solid rgb(0,0,0,.2);font-size:14px;font-style:normal;font-weight:400;line-height:17px;min-width:358px;padding-bottom:8px}@media screen and (max-width:700px){.popup__input{min-width:238px}}
 .popup__title{font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:34px auto 48px 35px}@media screen and (max-width:700px){.popup__title{font-size:18px;line-height:22px;margin:25px auto 75px}}
-.popup__save-button{background-color:#000;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-weight:400;line-height:22px;margin-top:10px;min-height:50px;min-width:358px;transition:opacity .2s}.popup__save-button:hover{opacity:.8}@media screen and (max-width:700px){.popup__save-button{font-size:14px;line-height:17px;margin-top:7px;min-height:46px;min-width:238px}}
+.popup__save-button{background-color:#000;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-weight:400;line-height:22px;margin-bottom:36px;margin-top:10px;min-height:50px;min-width:358px;transition:opacity .2s}.popup__save-button:hover{opacity:.8}@media screen and (max-width:700px){.popup__save-button{font-size:14px;line-height:17px;margin-top:7px;min-height:46px;min-width:238px}}
 .popup_is-opened{opacity:1;visibility:visible}
 .popup__img{display:block;max-height:75vh;max-width:75vw;-o-object-fit:cover;object-fit:cover}
 .popup__img-name{color:#fff;font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin-top:10px}
@@ -40,7 +40,7 @@
 .popup__close-button_type_increase{right:-40px;top:-40px}@media screen and (max-width:700px){.popup__close-button_type_increase{right:0;top:-36px}}
 .popup__container_type_increase{align-items:start;background-color:transparent;border-radius:0;color:#fff;margin:0}
 @media screen and (max-width:700px){.popup__title_type_add-card{margin:25px auto 75px 22px}}
-.popup__container_form{min-height:330px;min-width:430px}@media screen and (max-width:700px){.popup__container_form{min-height:322px;min-width:282px}}
+.popup__container_form{min-width:430px}@media screen and (max-width:700px){.popup__container_form{min-width:282px}}
 .popup__input-error{color:red;display:block;font-size:12px;font-weight:400;height:30px;line-height:15px;margin:5px 0 0;white-space:break-spaces}@media screen and (max-width:700px){.popup__input-error{width:238px}}
 .popup__input-error_active{display:flex}
 .form__input_type_error{border-bottom-color:red}
