@@ -8,8 +8,11 @@
 @import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__avatar/__avatar-image/profile__avatar-image.css);
+@import url(../blocks/profile/__avatar/__avatar-button/profile__avatar-button.css);
+
 @import url(../blocks/profile/__container/profile__container.css);
-@import url(../blocks/profile/__avatar-image/profile__avatar-image.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__block/profile__block.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
@@ -23,9 +26,10 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__element/card__element.css);
 @import url(../blocks/card/__title/card__title.css);
-@import url(../blocks/card/__like-button/card__like-button.css);
-@import url(../blocks/card/__like-button/_active/card__like-button_active.css);
-
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/__like-button/card__like-button.css);
+@import url(../blocks/card/__like/__like-button/_active/card__like-button_active.css);
+@import url(../blocks/card/__like/__like-counter/card__like-counter.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 

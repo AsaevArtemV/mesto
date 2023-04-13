@@ -1,8 +1,8 @@
 .card__element {
+  min-height: 79px;
+  width: 100%;
   background-color: #FFFFFF;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  min-height: 79px;
-  width: 100%;
 }

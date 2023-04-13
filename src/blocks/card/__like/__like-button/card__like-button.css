@@ -1,9 +1,9 @@
 .card__like-button {
-  background-image: url(../../../images/VectorStroke.svg);
+  background-image: url(../../../../images/VectorStroke.svg);
   background-repeat: no-repeat;
   min-width: 22px;
   min-height: 19px;
-  margin: 30px 20px 30px 15px;
+  margin: 0;
   padding: 0;
   border: none;
   cursor: pointer;

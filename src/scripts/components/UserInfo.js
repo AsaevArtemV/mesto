@@ -1,25 +1,35 @@
 export default class UserInfo {
   //profileName - Текстовой элемент с именем пользователя
    //profileJob - Текстовой элемент с описанием деятельности пользователя
+   //profileAvatar - Аватар пользователя
 
-  constructor( {profileName, profileJob} ) {
-    this._name = document.querySelector(profileName);
-    this._job = document.querySelector(profileJob);
+  constructor({ profileName, profileJob, profileAvatar }) {
+    this.name = document.querySelector(profileName);
+    this.job = document.querySelector(profileJob);
+    this.avatar = document.querySelector(profileAvatar);
   }
 
-  //Возвращает объект с данными пользователя
+  getUserId() {
+    return this._id;
+  }
+
   getUserInfo() {
-    const profileUserInfo = {
-      name: this._name.textContent,
-      job: this._job.textContent
+    return {
+      name: this.name.textContent,
+      job: this.job.textContent,
+      avatar: this.avatar.src,
     }
-    
-    return profileUserInfo
   }
 
-  // Принимает новые данные пользователя и добавляет их на страницу
-  setUserInfo(item) {
-    this._name.textContent = item.name;
-    this._job.textContent = item.job;
+  setUserInfo({
+    name = this.name.textContent,
+    about = this.job.textContent,
+    avatar = this.avatar.src,
+    _id,
+  }) {
+    this.name.textContent = name;
+    this.job.textContent = about;
+    this.avatar.src = avatar;
+    this._id = _id;
   }
 }

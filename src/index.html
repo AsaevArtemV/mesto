@@ -12,13 +12,16 @@
   <main>
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__avatar-image" src="<%=require('./images/Kusto.jpg')%>" alt="Аватар профиля">
+        <div class="profile__avatar">
+          <img class="profile__avatar-image" src="#" alt="Аватар профиля">
+          <button class="profile__avatar-button" type="button" aria-label="Обнавление аватара профиля"></button>
+        </div>
         <div class="profile__info">
           <div class="profile__block">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p class="profile__subtitle"></p>
         </div>
       </div>
       <button class="profile__add-button" type="button" aria-label="Добавить карточку"></button>
@@ -28,22 +31,24 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
-  <!--темплейт для карточек-->
-  <template class="card-template">
+  <!--ТЕМПЛЕЙТ ДЛЯ КАРТОЧЕК-->
+  <template class="card-template" id="card">
     <article class="card">
-      <button class="card__delete-button" type="button" aria-label="Корзина"></button>
+      <button class="card__delete-button" type="button" aria-label="Удалить"></button>
       <img class="card__image" src="#" alt="#">
       <div class="card__element">
         <h2 class="card__title">#</h2>
-        <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        <div class="card__like">
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+          <span class="card__like-counter"></span>
+        </div>
       </div>
     </article>
   </template>
-  <!--попаап редактирования профиля-->
+  <!--ПОПАП РЕДАКТИРОВАНИЯ ПРОФИЛЯ-->
   <div class="popup popup_type_edit-profile">
     <div class="popup__container popup__container_form popup__container_type_edit">
-      <button class="popup__close-button popup__close-button_type_edit" type="button"
-        aria-label="Закрыть окно"></button>
+      <button class="popup__close-button popup__close-button_type_edit" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form popup__form_type_edit-profile" name="profile-form" autocomplete="on" novalidate>
         <fieldset class="popup__set">
@@ -55,12 +60,28 @@
             <input type="text" name="job" id="job-input" class="popup__input popup__input_type_job" placeholder="Профессия" minlength="2" maxlength="200" required>
             <span class="popup__input-error job-input-error"></span>
           </label>
-        <button class="popup__save-button popup__save-button_type_edit-profile" type="submit">Сохранить</button>
-      </fieldset>
+          <button class="popup__save-button popup__save-button_type_edit-profile" type="submit">Сохранить</button>
+        </fieldset>
       </form>
     </div>
   </div>
-  <!--попап добавления новой карточки-->
+  <!--ПОПАП ОБНАВЛЕНИЯ АВАТАРА ПРОФИЛЯ-->
+  <div class="popup popup_type_update-avatar">
+    <div class="popup__container popup__container_form popup__container_type_avatar">
+      <button class="popup__close-button popup__close-button_type_avatar" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form_type_update-avatar" name="avatar-form" autocomplete="on" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="url" name="link" id="avatar-link-input" class="popup__input popup__input_type_avatar-link" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error avatar-link-input-error"></span>
+          </label>
+          <button class="popup__save-button popup__save-button_type_update-avatar" type="submit" aria-label="Сохранить">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <!--ПОПАП ДОБАВЛЕНИЯ НОВОЙ КАРИТОЧКИ-->
   <div class="popup popup_type_add-card">
     <div class="popup__container popup__container_form popup__container_type_add">
       <button class="popup__close-button popup__close-button_type_add" type="button" aria-label="Закрыть окно"></button>
@@ -80,13 +101,23 @@
       </form>
     </div>
   </div>
-  <!--попап добавления, увеличения фотографии-->
+  <!--ПОПАП ПРОСМОТРА КАРТОЧКИ-->
   <div class="popup popup_type_increase-card">
     <figure class="popup__container popup__container_type_increase">
       <button class="popup__close-button popup__close-button_type_increase" type="button" aria-label="Закрыть окно"></button>
       <img src="#" class="popup__img" alt="#">
       <figcaption class="popup__img-name"></figcaption>
     </figure>
+  </div>
+  <!--ПОПАП УДАЛЕНИЯ КАРТОЧКИ-->
+  <div class="popup popup_type_delete-card">
+    <div class="popup__container popup__container_form popup__container_type_delete-card">
+      <button class="popup__close-button popup__close-button_type_delete-card" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form class="popup__form popup__form_type_delete-card" name="card-form" autocomplete="on" novalidate>
+        <button class="popup__save-button popup__save-button_type_delete-card" type="submit">Да</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>

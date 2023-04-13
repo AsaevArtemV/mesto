@@ -26,14 +26,21 @@ export const initialCards = [
   },
 ];
 
+export const cardsSelector = '.cards';
+export const cardTemplateSelector = '#card';
+
 //ПЕРЕМЕННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 export const popupEditBtnOpen = document.querySelector('.profile__edit-button');
 export const profileForm = document.forms["profile-form"];
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_job');
 
+//ПЕРЕМЕННЫЕ ДЛЯ ПОПАПА С ОБНОВЛЕНИЕМ АВАТАРА
+export const popupUpdateAvatarBtnOpen = document.querySelector('.profile__avatar-button');
+
 //ПЕРЕМЕННЫЕ КНОПКИ ДОБАВЛЕНИЯ КАРТОЧЕК
 export const popupAddBtnOpenNewCard = document.querySelector('.profile__add-button');
+export const avatarForm = document.forms["avatar-form"];
 
 //ПЕРЕМЕННЫЕ ДЛЯ ДОБАВЛЕНИЯ КАРТОЧКИ
 export const cardForm = document.forms["card-form"];

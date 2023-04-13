@@ -19,6 +19,12 @@
     }
 }
 
+@media screen and (max-width: 619px) {
+  .profile__title {
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 384px) {
     .profile__title {
       margin: 20px 15px 8px 25px;
