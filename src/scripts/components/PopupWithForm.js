@@ -28,7 +28,6 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submit();
-      this.close();
     });
   }
 
@@ -38,18 +37,25 @@ export default class PopupWithForm extends Popup {
   }
 
   toggleButtonContent() {
-    const buttonContent = this._submitButton.innerText;
-    if (buttonContent === 'Сохранить') {
-      this._submitButton.innerText = 'Сохранение...';
-      }
-    if (buttonContent === 'Сохранение...') {
-      this._submitButton.innerText = 'Сохранить';
-    }
-      if (buttonContent === 'Создать') {
-      this._submitButton.innerText = 'Создание...';
-    }
-    if (buttonContent === 'Создание...') {
-      this._submitButton.innerText = 'Создать';
+    const content  = this._submitButton.innerText;
+    const switchText = text => {
+      this._submitButton.innerText = text;
+    };
+    switch (content) {
+      case 'Сохранить':
+        switchText('Сохранение...');
+        break;
+      case 'Сохранение...':
+        switchText('Сохранить');
+        break;
+      case 'Создать':
+        switchText('Создание...');
+        break;
+      case 'Создание...':
+        switchText('Создать');
+        break;
+      default:
+        break;
     }
   }
 

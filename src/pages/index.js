@@ -111,6 +111,7 @@ const popupWithFormCard = new PopupWithForm('.popup_type_add-card', {
       .then((cardData) => {
         const cardElement = createCard(cardData);
         cardsSection.addItemRev(cardElement);
+        popupWithFormCard.close();
       })
       .catch((err) => {
         console.log(err);
@@ -155,6 +156,9 @@ const handleFormSubmit = (card) => {
       card.deleteCard();
       popupWithConfirmation.close();
     })
+    .catch((err) => {
+      console.log(err);
+    })
 };
 
 //УДАЛЕНИЕ КАРТОЧКИ
@@ -196,7 +200,7 @@ popupUpdateAvatarBtnOpen.addEventListener('click', () => {
 popupEditBtnOpen.addEventListener('click', () => {
   const profileUserInfo = userInfo.getUserInfo();
   nameInput.value = profileUserInfo.name;
-  jobInput.value = profileUserInfo.job;
+  jobInput.value = profileUserInfo.about;
   popupWithFormProfile.open();
   popupEditFormValid.resetValidation();
 });

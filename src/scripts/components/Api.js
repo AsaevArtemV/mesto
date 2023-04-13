@@ -14,28 +14,25 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
       // .then(this._checkResponse) ИСПРАВИТЬ ВО ВСЕХ МЕТОДАХ!!!
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
 //Загрузка карточек с сервера
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
 //Устанавливает новые имя и профессию текущего пользователя
-  setUserInfo({ name, job }) {
+  setUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: job,
+        about: about,
       }),
     })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
 //Добавление новой карточки
@@ -49,7 +46,6 @@ class Api {
       }),
     })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
  // добавить лайк карточки
@@ -59,7 +55,6 @@ class Api {
       headers: this._headers,
     })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
   // удалить лайк карточки
@@ -69,7 +64,6 @@ class Api {
       headers: this._headers,
     })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
 //Удаление карточки
@@ -79,7 +73,6 @@ class Api {
       headers: this._headers,
     })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 
 //Обновление аватара пользователя
@@ -92,7 +85,6 @@ class Api {
       }),
     })
       .then(res => this._checkResponse(res))
-      .catch(err => console.log(err));
   }
 }
 
