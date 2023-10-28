@@ -16,8 +16,8 @@
 }
 
 @media screen and (max-width: 619px) {
-    .profile__add-button {
-      background-image: url(../../../images/AddButtonBIG.svg);
-      min-width: 282px;
-    }
+  .profile__add-button {
+    background-image: url(../../../images/AddButtonBIG.svg);
+    min-width: 282px;
+  }
 }

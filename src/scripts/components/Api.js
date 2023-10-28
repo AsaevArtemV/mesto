@@ -12,7 +12,6 @@ class Api {
 //Загрузка информации о пользователе с сервера
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
-      // .then(this._checkResponse) ИСПРАВИТЬ ВО ВСЕХ МЕТОДАХ!!!
       .then(res => this._checkResponse(res))
   }
 

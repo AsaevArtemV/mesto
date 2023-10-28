@@ -1,10 +1,8 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-
    //popupSelector - Селектор элемента с попапом
    //handleSubmit - Колбек для обработки отправки формы
-
    constructor(popupSelector, { handleSubmit }) {
     super(popupSelector);
     this._handleSubmit = handleSubmit;

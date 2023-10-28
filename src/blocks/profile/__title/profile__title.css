@@ -12,11 +12,11 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .profile__title {
-      max-width: 189px;
-      font-size: 27px;
-      line-height: 33px;
-    }
+  .profile__title {
+    max-width: 189px;
+    font-size: 27px;
+    line-height: 33px;
+  }
 }
 
 @media screen and (max-width: 619px) {
@@ -26,7 +26,7 @@
 }
 
 @media screen and (max-width: 384px) {
-    .profile__title {
-      margin: 20px 15px 8px 25px;
-    }
+  .profile__title {
+    margin: 20px 15px 8px 25px;
+  }
 }

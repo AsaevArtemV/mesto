@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 700px) {
-    .popup__input {
-      min-width: 238px;
-    }
+  .popup__input {
+    min-width: 238px;
+  }
 }

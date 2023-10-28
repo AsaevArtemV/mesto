@@ -6,14 +6,14 @@
 }
 
 @media screen and (max-width: 619px) {
-    .profile__container {
-      flex-direction: column;
-      align-items: center;
-    }
+  .profile__container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .profile__container {
-      gap: 6px;
-    }
+  .profile__container {
+    gap: 6px;
+  }
 }

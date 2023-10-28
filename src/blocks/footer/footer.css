@@ -4,19 +4,19 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .footer {
-      max-width: 581px;
-    }
+  .footer {
+    max-width: 581px;
+  }
 }
 
 @media screen and (max-width: 619px) {
-    .footer {
-      margin-left: 19px;
-    }
+  .footer {
+    margin-left: 19px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .footer {
-      margin-bottom: 36px;
-    }
+  .footer {
+    margin-bottom: 36px;
+  }
 }

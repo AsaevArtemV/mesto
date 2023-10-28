@@ -7,21 +7,21 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .elements {
-      max-width: 581px;
-    }
+  .elements {
+    max-width: 581px;
+  }
 }
 
 @media screen and (max-width: 619px) {
-    .elements {
-      max-width: 282px;
-    }
+  .elements {
+    max-width: 282px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .elements {
-      margin-bottom: 50px;
-      margin-left: 19px;
-      margin-right: 19px;
-    }
+  .elements {
+    margin-bottom: 50px;
+    margin-left: 19px;
+    margin-right: 19px;
+  }
 }
